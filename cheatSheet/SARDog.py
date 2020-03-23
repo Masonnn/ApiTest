@@ -1,6 +1,7 @@
 # hahah
 from cheatSheet.Dog import Dog
 
+
 class SARDog(Dog):
     """Represent a search dog."""
 

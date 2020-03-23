@@ -25,4 +25,3 @@ with open(filename) as file_object:
 
 for line in lines:
     print(line)
-

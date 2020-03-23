@@ -24,7 +24,3 @@ def add_number(x, y):
 
 sumValue = add_number(3, 5)
 print(sumValue)
-
-
-
-
