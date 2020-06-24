@@ -13,6 +13,13 @@ response = requests.get(myUrl, headers = header)
 
 bs_res = bs(response.text, 'html.parser')
 
-print(response.text)
+
+
+for tags in bs_res.find_all('div', attrs={'class':'hd'}):
+    for atag in tags.find_all('a'):
+        print(atag.get('href'))
+        print(atag.find('span').text)
+
+# print(response.text)
 print(f'返回的状态码是：{response.status_code}')
 
