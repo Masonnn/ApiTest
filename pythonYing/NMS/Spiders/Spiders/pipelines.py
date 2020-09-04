@@ -5,6 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 from scrapy.exporters import CsvItemExporter
+import pymysql
 
 
 class SpidersPipeline:
@@ -25,5 +26,26 @@ class SpidersPipeline:
             exporter.start_exporting()
             exporter.export_item(item)
             exporter.finish_exporting()
+
+        return item
+
+
+class ToMysql(object):
+    def __init__(self):
+        self.connect = pymysql.connect(
+            host='127.0.0.1',
+            port=3306,
+            user='root',  # 使用自己的用户名
+            passwd='1qaz@WSX',  # 使用自己的密码
+            db='nms',  # 数据库名
+            charset='utf8mb4'
+        )
+        self.cursor = self.connect.cursor()
+
+    def process_item(self, item, spider):
+        self.cursor.execute(
+            """INSERT INTO phones (prd_name, link, comments) VALUES (%s, %s, %s)""",
+            (item['prd_name'], item['link'], item['comments']))
+        self.connect.commit()
 
         return item
