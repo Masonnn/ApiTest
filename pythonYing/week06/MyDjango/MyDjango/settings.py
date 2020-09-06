@@ -75,8 +75,7 @@ WSGI_APPLICATION = 'MyDjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test',
-        # 'NAME': 'movies_douban',
+        'NAME': 'Scrapy_learn',
         'USER': 'root',
         'PASSWORD': '1qaz@WSX',
         'HOST': '127.0.0.1',

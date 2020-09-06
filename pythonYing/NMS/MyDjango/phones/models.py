@@ -8,21 +8,22 @@
 from django.db import models
 
 
-class Doubanmovies(models.Model):
-    film_name = models.CharField(max_length=100)
-    film_stars = models.IntegerField()
-    film_shorts = models.CharField(max_length=3000)
+class Phones(models.Model):
+    prd_name = models.CharField(max_length=100)
+    link = models.CharField(max_length=255)
+    comments = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'doubanMovies'
+        db_table = 'phones'
 
 
-# class Maoyanmovies(models.Model):
-#     film_name = models.CharField(max_length=100)
-#     film_genre = models.CharField(max_length=255)
-#     play_date = models.DateField(blank=True, null=True)
-#
-#     class Meta:
-#         managed = False
-#         db_table = 'maoyanMovies'
+class PhonesHandled(models.Model):
+    prd_name = models.TextField(blank=True, null=True)
+    link = models.TextField(blank=True, null=True)
+    comments = models.TextField(blank=True, null=True)
+    sentiments = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'phones_handled'

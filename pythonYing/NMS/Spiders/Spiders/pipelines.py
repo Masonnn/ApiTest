@@ -43,9 +43,14 @@ class ToMysql(object):
         self.cursor = self.connect.cursor()
 
     def process_item(self, item, spider):
-        self.cursor.execute(
-            """INSERT INTO phones (prd_name, link, comments) VALUES (%s, %s, %s)""",
-            (item['prd_name'], item['link'], item['comments']))
-        self.connect.commit()
-
+        try:
+            self.cursor.execute(
+                """INSERT INTO phones (prd_name, link, comments) VALUES (%s, %s, %s)""",
+                (item['prd_name'], item['link'], item['comments']))
+            # self.cursor.close()
+            self.connect.commit()
+        except Exception as e:
+            print("插入数据失败", e)
+            # self.connect.rollback()
+        # self.connect.close()
         return item
