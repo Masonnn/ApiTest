@@ -21,7 +21,7 @@ jmespath==0.10.0
 joblib==0.16.0
 kiwisolver==1.2.0
 logger==1.4
-lxml==4.5.2
+lxml==4.6.2
 matplotlib==3.2.2
 mysqlclient==2.0.1
 numpy==1.19.0
