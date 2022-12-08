@@ -2,7 +2,7 @@ apc==1.0.2
 attrs==19.3.0
 Automat==20.2.0
 beautifulsoup4==4.9.1
-certifi==2020.6.20
+certifi==2022.12.7
 cffi==1.14.2
 chardet==3.0.4
 constantly==15.1.0
